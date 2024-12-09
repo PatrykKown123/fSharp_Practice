@@ -10,5 +10,12 @@ let rec greatestNumber list =
     greatestNumber' list 0
 
 let smallestNumber list =
+    let rec smallestNumber' list smallestNum =
+        match list with
+        | [] -> smallestNum
+        | x::xs when x < smallestNum -> smallestNumber' xs x
+        | _::xs -> smallestNumber' xs smallestNum
+    smallestNumber' list (greatestNumber list)
     
+printf "The smallest number of list is: %d" (smallestNumber list)
     
